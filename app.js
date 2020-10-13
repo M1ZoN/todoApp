@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const mongoURL = "mongodb+srv://" + (process.env.USERNAME || "admin-nozim") + ":" + (process.env.PASSWORD || "fBYOsPjhwmA2qRlj") + "@cluster0.s3mwb.mongodb.net/todoListDB?retryWrites=true&w=majority"
+const mongoURL = "mongodb+srv://" + process.env.USERNAME + ":" + process.env.PASSWORD + "@cluster0.s3mwb.mongodb.net/todoListDB?retryWrites=true&w=majority"
 
 mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
@@ -138,6 +138,6 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen((process.env.PORT || 3000), function() {
+  console.log("Server started sucessfully");
 });
