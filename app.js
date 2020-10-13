@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const mongoURL = "mongodb+srv://" + process.env.USERNAME + ":" + process.env.PASSWORD + "@cluster0.s3mwb.mongodb.net/todoListDB?retryWrites=true&w=majority"
+const mongoURL = "mongodb+srv://" + (process.env.USERNAME || "admin-nozim") + ":" + (process.env.PASSWORD || "fBYOsPjhwmA2qRlj") + "@cluster0.s3mwb.mongodb.net/todoListDB?retryWrites=true&w=majority"
 
 mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
